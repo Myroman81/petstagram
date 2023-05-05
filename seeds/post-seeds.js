@@ -4,7 +4,8 @@ const postData = [
     {
         title: 'Dog',
         body: 'A Dog',
-        user_id: 1
+        user_id: 1,
+        imageUrl: 'https://cdn.greenfieldpuppies.com/wp-content/uploads/2016/07/Pomsky-2-600x600.jpg'
     },
     {
         title: 'Cat',

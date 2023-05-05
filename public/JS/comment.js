@@ -5,8 +5,10 @@ const commentFormHandler = async function (event) {
     const body = document.querySelector('#comment').value;
 
     if (body) {
-
-        const response = await fetch('/api/comments', {
+        const id = window.location.toString().split('/')[
+            window.location.toString().split('/').length - 1
+          ];
+        const response = await fetch(`/api/comments/${id}`, {
             method: 'POST',
             body: JSON.stringify({
                 body
@@ -15,18 +17,20 @@ const commentFormHandler = async function (event) {
                 'Content-Type': 'application/json'
             }
         });
-        const data = await response.json();
-        console.log(data)
+        if (response.ok ){
+            document.location.replace(`/posts/${id}`)
+        }
+        // const data = await response.json();
+        // console.log(data)
 
         // create a new comment element
-        const commentElement = document.createElement('div');
-        commentElement.classList.add('comment');
-        commentElement.innerHTML = `
-
-        <p>Comment by User Number: ${data.user_id}</p>
+    //     const commentElement = document.createElement('div');
+    //     commentElement.classList.add('comment');
+    //     commentElement.innerHTML = `
+    //     <p>Comment by User Number: ${data.user_id}</p>
     
-        <p>${data.body}</p>
-      `;
+    //     <p>${data.body}</p>
+    //   `;
 
         // add the new comment element to the comments section
         const commentsSection = document.querySelector('#comments');

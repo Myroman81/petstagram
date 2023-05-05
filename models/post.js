@@ -30,6 +30,9 @@ Post.init(
         created_at: {
          type: DataTypes.DATE,
         },
+        imageUrl: {
+            type: DataTypes.TEXT,
+        }
     },
     {
      sequelize,
