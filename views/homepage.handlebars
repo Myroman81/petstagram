@@ -1,17 +1,30 @@
 
-{{#each posts as |post| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      <a href="/posts/{{post.id}}">{{post.title}}</a>
-    </h2>
-    <p>
-      {{post.body}}
-    </p>
-    <p>Created by <a href="/other-users/{{post.user_id}}">{{post.user.name}}</a></p>
-  </div>
-  <div class="col-md-7">
+<div class="container">
+  <div class="columns">
+    <div class="column is-two-thirds">
+      {{#each (reverse posts) as |post| }}
+      <div class="card mb-4 project">
+        <div class="card-content">
+          <p class="title"><a href="/posts/{{post.id}}">{{post.title}}</a></p>
+          <div class="content">
+            {{post.body}}
+            <br>
+            <p>Created by <a href="/other-users/{{post.user_id}}">{{post.user.name}}</a></p>
+          </div>
+          {{#if post.imageUrl}}
+          <div class="card-image">
+            <figure class="image is-128x128">
+              <img src="{{post.imageUrl}}" alt="Image">
+            </figure>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <div class="column">
+      <a href="/new-post" class="button is-primary">New Post</a>
+    </div>
   </div>
 </div>
-{{/each}}
+

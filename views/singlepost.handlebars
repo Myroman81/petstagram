@@ -16,21 +16,22 @@
 <div class="text-center">
   <h1>{{title}}</h1>
   <img src="{{imageUrl}}" alt="POST IMAGE">
-  <p>Posted by {{user.name}} on {{createdAt}}</p>
+  <p>Posted by {{user.name}} on {{format_date created_at}}</p>
   <p>{{post.content}}</p>
   {{log this}}
 </div>
 
   <form method="POST" id="commentSubmit">
     <label for="comment">Leave a comment here !</label>
+    <br>
     <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
     <br>
     <button type="submit">SUBMIT</button>
   </form>
 
-  <h3 id="comments">COMMENTS:</h3>
-  {{#each comments as |comment|}}
-  
+  <h3 class="title is-3 mt-4" id="comments">COMMENTS:</h3>
+  {{#each (reverse comments) as |comment|}}
+  {{log comments}}
   <div class="comment">
     <p>Comment by {{comment.user.name}}:</p>
     <p>{{comment.body}}</p>

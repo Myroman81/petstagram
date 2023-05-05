@@ -7,8 +7,11 @@
 <ul>
     {{#each user.posts}}
     <li>
-        <h3 class="title is-3">{{this.title}}</h3>
+        <h3 class="title is-3"><a href="/posts/{{this.id}}">{{this.title}}</a></h3>
         <p class="content">{{this.content}}</p>
+        {{#if this.imageUrl}}
+        <img src="{{this.imageUrl}}" alt="{{this.title}}"  style="width: 250px; height: 250px;">
+        {{/if}}
     </li>
     {{/each}}
 </ul>
